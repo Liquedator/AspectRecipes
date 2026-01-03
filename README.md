@@ -11,7 +11,7 @@ Considerations have been made regarding thematic/gameplay cohesion, as well as b
 
 ### Recipes
 
-| Ingredients | Result |
+| Ingredients | Aspect |
 |------------|--------|
 | Wake of Vultures + Molten Perforator | Ifrit’s Distinction |
 | Wake of Vultures + Frost Relic | Her Biting Embrace |
