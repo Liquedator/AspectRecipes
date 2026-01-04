@@ -1,0 +1,10 @@
+﻿{
+	"name": "AspectRecipes",
+	"version_number": "1.1.0",
+	"website_url": "https://github.com/Liquedator/AspectRecipes",
+	"description": "Adds crafting recipes for all of the aspects in the game!",
+	"dependencies": [
+		"bbepis-BepInExPack-5.4.2108",
+		"RiskofThunder-HookGenPatcher-1.2.3"
+	]
+}
