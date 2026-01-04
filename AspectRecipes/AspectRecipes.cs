@@ -23,9 +23,6 @@ namespace AspectRecipes {
         public const string PluginName = "AspectRecipes";
         public const string PluginVersion = "1.0.2";
 
-        //list of new craftables
-        internal static readonly List<CraftableDef> Craftables = new();
-
         //number of new entries
         private const int numCraftables = 10;
 
@@ -35,40 +32,40 @@ namespace AspectRecipes {
             new myContentPack().Initialise();
             PickupCatalog.availability.CallWhenAvailable(DefineRecipes);
         }
-
-        internal static void DefineRecipes() {
+        
+        private void DefineRecipes() {
             //ifrits distinction
-            fillCraftable(Craftables[0], "EliteFireEquipment", 1, "HeadHunter", "FireballsOnHit");
+            fillCraftable(myContentPack.Craftables[0], "EliteFireEquipment", 1, "HeadHunter", "FireballsOnHit");
  
             //aurelionites blessing
-            fillCraftable(Craftables[1], "EliteAurelioniteEquipment", 1, "HeadHunter", "BoostAllStats");
+            fillCraftable(myContentPack.Craftables[1], "EliteAurelioniteEquipment", 1, "HeadHunter", "BoostAllStats");
          
             //her biting embrace
-            fillCraftable(Craftables[2], "EliteIceEquipment", 1, "HeadHunter", "Icicle");
+            fillCraftable(myContentPack.Craftables[2], "EliteIceEquipment", 1, "HeadHunter", "Icicle");
          
             //his reassurance
-            fillCraftable(Craftables[3], "EliteEarthEquipment", 1, "HeadHunter", "Plant");
+            fillCraftable(myContentPack.Craftables[3], "EliteEarthEquipment", 1, "HeadHunter", "Plant");
          
             //his spiteful boon
-            fillCraftable(Craftables[4], "EliteBeadEquipment", 1, "HeadHunter", "LunarTrinket");
+            fillCraftable(myContentPack.Craftables[4], "EliteBeadEquipment", 1, "HeadHunter", "LunarTrinket");
          
             //nkuhana's retort
-            fillCraftable(Craftables[5], "ElitePoisonEquipment", 1, "HeadHunter", "NovaOnHeal");
+            fillCraftable(myContentPack.Craftables[5], "ElitePoisonEquipment", 1, "HeadHunter", "NovaOnHeal");
          
             //shared design
-            fillCraftable(Craftables[6], "EliteLunarEquipment", 1, "HeadHunter", "ShinyPearl");
+            fillCraftable(myContentPack.Craftables[6], "EliteLunarEquipment", 1, "HeadHunter", "ShinyPearl");
          
             //silence between 2 strikes
-            fillCraftable(Craftables[7], "EliteLightningEquipment", 1, "HeadHunter", "ShockNearby");
+            fillCraftable(myContentPack.Craftables[7], "EliteLightningEquipment", 1, "HeadHunter", "ShockNearby");
            
             //spectral circlet
-            fillCraftable(Craftables[8], "EliteHauntedEquipment", 1, "HeadHunter", "GhostOnKill");
+            fillCraftable(myContentPack.Craftables[8], "EliteHauntedEquipment", 1, "HeadHunter", "GhostOnKill");
 
             //void aspect
-            fillCraftable(Craftables[9], "EliteVoidEquipment", 1, "HeadHunter", "ExtraLifeVoid");
+            fillCraftable(myContentPack.Craftables[9], "EliteVoidEquipment", 1, "HeadHunter", "ExtraLifeVoid");
         }
 
-        private static CraftableDef fillCraftable(CraftableDef craftable, string aspect, int amount, string vultures, string itemB) {
+        private void fillCraftable(CraftableDef craftable, string aspect, int amount, string vultures, string itemB) {
             //null check
             var itemDefVultures = ItemCatalog.GetItemDef(ItemCatalog.FindItemIndex(vultures));
             var itemDefItemB = ItemCatalog.GetItemDef(ItemCatalog.FindItemIndex(itemB));
@@ -80,9 +77,9 @@ namespace AspectRecipes {
                     $"[AspectRecipes] Missing def: equip={aspect}, a={vultures}, b={itemB}");
                 craftable.recipes = System.Array.Empty<Recipe>();
                 craftable.pickup = null;
-                return craftable;
             }
 
+            Recipe[] array = new Recipe[1];
             var recipe = new Recipe() { //make the recipe
                 amountToDrop = amount,
                 ingredients = new[] {
@@ -97,21 +94,28 @@ namespace AspectRecipes {
 
             //assign the recipe to the craftable def
             craftable.pickup = EquipmentCatalog.GetEquipmentDef(EquipmentCatalog.FindEquipmentIndex(aspect));
-            craftable.recipes = new[] {
-                recipe
+            array[0] = recipe;
+            craftable.recipes = new[] { 
+                recipe 
             };
 
-            return craftable;
+            Debug.Log("Added recipe " + vultures + " + " + itemB + " = " + aspect);
         }
 
         private void createBlankCraftables() {
             for (int i = 0; i < numCraftables; i++) {
-                Craftables.Add(ScriptableObject.CreateInstance<CraftableDef>());
+                var c = ScriptableObject.CreateInstance<CraftableDef>();
+                c.name = "AspectRecipe #" + (i + 1);
+                myContentPack.Craftables.Add(c);
+                Debug.Log("Added blank recipe " + c.name);
             }
         }
 
         public class myContentPack : IContentPackProvider {
             internal ContentPack contentPack = new ContentPack();
+
+            public static List<CraftableDef> Craftables = new List<CraftableDef>();
+
             public string identifier => "liquedator.AspectRecipes";
 
             public void Initialise() {
