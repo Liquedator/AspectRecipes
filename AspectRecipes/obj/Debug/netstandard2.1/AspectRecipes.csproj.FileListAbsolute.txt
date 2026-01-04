@@ -1,0 +1,10 @@
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\bin\Debug\netstandard2.1\AspectRecipes.deps.json
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\bin\Debug\netstandard2.1\AspectRecipes.dll
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\bin\Debug\netstandard2.1\AspectRecipes.pdb
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\obj\Debug\netstandard2.1\AspectRecipes.csproj.AssemblyReference.cache
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\obj\Debug\netstandard2.1\AspectRecipes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\obj\Debug\netstandard2.1\AspectRecipes.AssemblyInfoInputs.cache
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\obj\Debug\netstandard2.1\AspectRecipes.AssemblyInfo.cs
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\obj\Debug\netstandard2.1\AspectRecipes.csproj.CoreCompileInputs.cache
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\obj\Debug\netstandard2.1\AspectRecipes.dll
+C:\Users\Kieran\Desktop\AspectRecipes\AspectRecipes\obj\Debug\netstandard2.1\AspectRecipes.pdb

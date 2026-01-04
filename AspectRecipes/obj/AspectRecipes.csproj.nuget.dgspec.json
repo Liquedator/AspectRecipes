@@ -1,0 +1,103 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Kieran\\Desktop\\AspectRecipes\\AspectRecipes\\AspectRecipes.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Kieran\\Desktop\\AspectRecipes\\AspectRecipes\\AspectRecipes.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Kieran\\Desktop\\AspectRecipes\\AspectRecipes\\AspectRecipes.csproj",
+        "projectName": "AspectRecipes",
+        "projectPath": "C:\\Users\\Kieran\\Desktop\\AspectRecipes\\AspectRecipes\\AspectRecipes.csproj",
+        "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kieran\\Desktop\\AspectRecipes\\AspectRecipes\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Kieran\\Desktop\\AspectRecipes\\NuGet.Config",
+          "C:\\Users\\Kieran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.bepinex.dev/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "BepInEx.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.*, )"
+            },
+            "BepInEx.Core": {
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "MMHOOK.RoR2": {
+              "target": "Package",
+              "version": "[*, )",
+              "noWarn": [
+                "NU1701"
+              ]
+            },
+            "R2API.Core": {
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "R2API.Items": {
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "R2API.Language": {
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "RiskOfRain2.GameLibs": {
+              "target": "Package",
+              "version": "[*-*, )"
+            },
+            "UnityEngine.Modules": {
+              "target": "Package",
+              "version": "[*, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
