@@ -2,6 +2,8 @@
 
 AspectRecipes adds crafting recipes for elite aspect equipment in Risk of Rain 2.
 
+2 unused aspects in the game code have been given recipes.
+
 The old recipes which were removed in a recent update (His Spiteful Boon, Aurelionite's Blessing, His Reassurance) have been added back, with the same recipes that they had.
 
 Considerations have been made regarding thematic/gameplay cohesion, as well as balancing (more powerful aspects will require more powerful/rare items).
@@ -22,9 +24,10 @@ Recipes for unused equipment have also been added.
 | Wake of Vultures + Irradiant Pearl | Shared Design |
 | Wake of Vultures + Unstable Tesla Coil | Silence Between Two Strikes |
 | Wake of Vultures + Happiest Mask | Spectral Circlet |
+| Wake of Vultures + Hardlight Afterbuner | Beyond the Limits (currently has no function)|
 
 ---
 
 ### TO DO
-- Add the Voidborne Curiosity equipment to the logbook
-- Add a recipe and functionality for the unused "Beyond the Limits" aspect in the game code
+- Add all aspect equipments to the logbook
+- Add functionality for the unused "Beyond the Limits" aspect in the game code

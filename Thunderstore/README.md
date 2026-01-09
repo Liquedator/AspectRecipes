@@ -22,9 +22,10 @@ Recipes for unused equipment have also been added.
 | Wake of Vultures + Irradiant Pearl | Shared Design |
 | Wake of Vultures + Unstable Tesla Coil | Silence Between Two Strikes |
 | Wake of Vultures + Happiest Mask | Spectral Circlet |
+| Wake of Vultures + Hardlight Afterbuner | Beyond the Limits |
 
 ---
 
 ### TO DO
-- Add the Voidborne Curiosity equipment to the logbook
+- Add all equipments to the logbook
 - Add a recipe and functionality for the unused "Beyond the Limits" aspect in the game code

@@ -21,10 +21,10 @@ namespace AspectRecipes {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "liquedator";
         public const string PluginName = "AspectRecipes";
-        public const string PluginVersion = "1.0.2";
+        public const string PluginVersion = "1.0.3";
 
         //number of new entries
-        private const int numCraftables = 10;
+        private const int numCraftables = 11;
 
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake() {
@@ -63,6 +63,9 @@ namespace AspectRecipes {
 
             //void aspect
             fillCraftable(myContentPack.Craftables[9], "EliteVoidEquipment", 1, "HeadHunter", "ExtraLifeVoid");
+
+            //speed aspect
+            fillCraftable(myContentPack.Craftables[10], "EliteSecretSpeedEquipment", 1, "HeadHunter", "UtilitySkillMagazine");
         }
 
         private void fillCraftable(CraftableDef craftable, string aspect, int amount, string vultures, string itemB) {
