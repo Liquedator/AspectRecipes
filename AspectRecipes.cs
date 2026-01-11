@@ -20,7 +20,7 @@ namespace AspectRecipes {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "liquedator";
         public const string PluginName = "AspectRecipes";
-        public const string PluginVersion = "1.0.4";
+        public const string PluginVersion = "1.0.5";
 
         //number of new entries
         private const int numCraftables = 11;
@@ -196,14 +196,22 @@ namespace AspectRecipes {
 
         private void addLogbookDescriptions() {
             //load void infestor icon
-            string path = System.IO.Path.Combine(Paths.PluginPath, "liquedator-AspectRecipes", "AspectRecipes", "voidelitepickupicon.png"); //liquedator-AspectRecipes
+            string path = System.IO.Path.Combine(Paths.PluginPath, "liquedator-AspectRecipes", "AspectRecipes", "voidelitepickupicon.png");
             Debug.Log("Obtaining sprite file from: " + path);
             byte[] bytes = File.ReadAllBytes(path);
             var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
             tex.LoadImage(bytes);
             Sprite voidSprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f);
             getEquipDefFromName("EliteVoidEquipment").pickupIconSprite = voidSprite;
+
+            //do the pickup def too
+            PickupIndex pickupIndex = PickupCatalog.FindPickupIndex(getEquipDefFromName("EliteVoidEquipment").equipmentIndex);
+            PickupDef pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
+            pickupDef.iconSprite = voidSprite;
+            pickupDef.iconTexture = voidSprite.texture;
+
             updateText("EQUIPMENT_AFFIXVOID_NAME", "From One Thousand Miles Under");
+            updateText("EQUIPMENT_AFFIXVOID_PICKUP", "Become an aspect of the Void.");
 
             //update descriptions
             //<style=cIsUtility></style>

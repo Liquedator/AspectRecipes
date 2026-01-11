@@ -1,6 +1,6 @@
 ﻿{
 	"name": "AspectRecipes",
-	"version_number": "1.0.4",
+	"version_number": "1.0.5",
 	"website_url": "https://github.com/Liquedator/AspectRecipes",
 	"description": "Adds crafting recipes for all of the aspects in the game, including 2 unused, previously unaccessible ones!",
 	"dependencies": [

@@ -13,3 +13,8 @@
 - Added all aspects to the logbook, including the 2 unused equipments "Beyond the Limits" and "From One Thousand Miles Under". Compatible with Zet's Aspects and WolfoQOL's features of adding aspects to the logbook. If there are other mods which do so, let me know.
 - Added an icon for the Void Elite and a name for it, "From One Thousand Miles Under"
 - Added detailed descriptions to all elite aspects. Information for these elites were taken from the official RoR2 wiki (https://riskofrain2.wiki.gg/)
+
+## 1.0.5
+
+- Fixed missing texture for void aspect in the Wandering Chef crafting menu
+- Implemented a missing pickup description for the void aspect
