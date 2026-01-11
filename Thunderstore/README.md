@@ -31,3 +31,4 @@ Recipes for unused equipment have also been added.
 
 ### TO DO
 - Add functionality for the unused "Beyond the Limits" aspect in the game code
+- Maybe add a sprite and functionality for the unused "Echo" elite aspect

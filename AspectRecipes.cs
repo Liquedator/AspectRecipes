@@ -32,15 +32,12 @@ namespace AspectRecipes {
             new myContentPack().Initialise();
             PickupCatalog.availability.CallWhenAvailable(DefineRecipes);
 
-            //add descriptions for aspects
-            PickupCatalog.availability.CallWhenAvailable(addLogbookDescriptions);
-
             //add logbook entries for aspects
             On.RoR2.UI.LogBook.LogBookController.BuildPickupEntries += addLogbookEntries;   
             //move aspects to the end
             On.RoR2.UI.LogBook.LogBookController.BuildPickupEntries += moveAspectsToEnd;
- 
-            Debug.Log("Adding unused aspects to logbook");
+            //add descriptions for aspects
+            PickupCatalog.availability.CallWhenAvailable(addLogbookDescriptions);
         }
         
         private void DefineRecipes() {
@@ -199,7 +196,7 @@ namespace AspectRecipes {
 
         private void addLogbookDescriptions() {
             //load void infestor icon
-            string path = System.IO.Path.Combine(Paths.PluginPath, "Unknown-AspectRecipes.dll", "voidelitepickupicon.png"); //liquedator-AspectRecipes
+            string path = System.IO.Path.Combine(Paths.PluginPath, "liquedator-AspectRecipes", "AspectRecipes", "voidelitepickupicon.png"); //liquedator-AspectRecipes
             Debug.Log("Obtaining sprite file from: " + path);
             byte[] bytes = File.ReadAllBytes(path);
             var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
@@ -207,12 +204,69 @@ namespace AspectRecipes {
             Sprite voidSprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f);
             getEquipDefFromName("EliteVoidEquipment").pickupIconSprite = voidSprite;
             updateText("EQUIPMENT_AFFIXVOID_NAME", "From One Thousand Miles Under");
+
+            //update descriptions
+            //<style=cIsUtility></style>
+            //<style=cIsHealing></style>
+            //<style=cIsDamage></style>
+            //<color=#FF7F7F></color>
+            //<br>
+            updateText("EQUIPMENT_AFFIXVOID_DESC",
+                "Gain <style=cIsHealing>50% maximum health</style> but <style=cIsDamage>reduce base damage</style> by <style=cIsDamage>30%</style>.<br>" +
+                "<style=cIsDamage>100%</style> chance on hit to apply a stack of <style=cIsDamage>collapse</style> on enemies for <style=cIsDamage>400%</style> TOTAL damage per stack after <style=cIsDamage>3</style> seconds.<br>" +
+                "Gain a <style=cIsUtility>bubble shield</style> which <style=cIsUtility>blocks</style> any single instance of damage. Recharges after <style=cIsUtility>15</style> seconds.");
+
             updateText("EQUIPMENT_AFFIXSECRETSPEED_DESC",
-                "Increases <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsUtility>200%</style> and negates all fall damage.<br>" +
-                "Allies within <style=cIsUtility>40m</style> also gain these buffs which last for <style=cIsUtility>10 more seconds</style> upon leaving the radius.<br>" +
-                "Enemies within the same <style=cIsUtility>40m</style> radius are <style=cIsUtility>slowed</style> for <style=cIsUtility>-50% movement speed</style> " +
-                "and <style=cIsDamage>-1% attack speed</style> for <style=cIsUtility>every percentage of movement speed</style> you have.<br>" +
-                "These debuffs last a further <style=cIsUtility>10 seconds</style> upon leaving the radius.");
+                "Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsUtility>200%</style> and <style=cIsUtility>negate all fall damage</style>.<br>" +
+                "Allies within <style=cIsUtility>40m</style> also gain these buffs, which last for a further <style=cIsUtility>10</style> seconds upon leaving the radius.<br>" +
+                "Enemies within the same <style=cIsUtility>40m</style> radius have <style=cIsUtility>50%</style> reduced <style=cIsUtility>movement speed</style> " +
+                "and <style=cIsDamage>1%</style> reduced <style=cIsDamage>attack speed</style> for <style=cIsUtility>every percentage of movement speed</style> you have.<br>" +
+                "These debuffs last a further <style=cIsUtility>10</style> seconds upon leaving the radius.");
+
+            updateText("EQUIPMENT_AFFIXAURELIONITE_DESC",
+                "Enemies drop a treasure on hit worth <style=cIsUtility>8 gold</style>, which <style=cIsUtility>scales over time</style>.<br>" +
+                "On activation, summon a golden <style=cIsDamage>spike attack</style> consisting of <style=cIsDamage>2 pulses</style>.<br>" +
+                "The outer ring does <style=cIsDamage>15% damage</style>, followed by the inner ring which does <style=cIsDamage>150% damage</style>.");
+
+            updateText("EQUIPMENT_AFFIXBEAD_DESC",
+                "<style=cIsUtility>Tether</style> to <style=cIsUtility>5 nearby allies</style> in a <style=cIsUtility>35m</style> radius.<br>" +
+                "Tethered allies gain <style=cIsHealing>300 armor</style> and when hit, begin to charge a <style=cIsDamage>lunar spike ball</style>.<br>" +
+                "After being hit <style=cIsDamage>10</style> times, the ball is <style=cIsDamage>fired</style>, locking on to a target and dealing <style=cIsDamage>100%</style> damage. " +
+                "Applies <style=cIsDamage>lunar ruin</style>.");
+
+            updateText("EQUIPMENT_AFFIXRED_DESC",
+                "Leave behind a <style=cIsDamage>trail of fire</style> which deals <style=cIsDamage>150%</style> damage <style=cIsDamage>per second</style>.<br>" +
+                "<style=cIsDamage>100%</style> chance on hit to <style=cIsDamage>burn</style> enemies for <style=cIsDamage>50%</style> TOTAL damage over time.");
+
+            updateText("EQUIPMENT_AFFIXBLUE_DESC",
+                "<style=cIsHealing>Convert 50%</style> of your <style=cIsHealing>maximum health</style> into <style=cIsHealing>regenerating shields</style>.<br>" +
+                "<style=cIsDamage>100%</style> chance on hit to attach <style=cIsDamage>lightning bombs</style> to enemies which <style=cIsDamage>explode</style> after a short delay, dealing <style=cIsDamage>50%</style> TOTAL damage.");
+
+            updateText("EQUIPMENT_AFFIXWHITE_DESC",
+                "<style=cIsUtility>100%</style> chance on hit to <style=cIsUtility>greatly slow</style> enemies, reducing their <style=cIsUtility>movement speed</style> by <style=cIsUtility>80%</style>.<br>" +
+                "<color=#FF7F7F>On death</color>, <style=cIsDamage>explode</style> in a small area, dealing <style=cIsDamage>150%</style> damage and <style=cIsDamage>freezing</style> enemies in the explosion.");
+
+            updateText("EQUIPMENT_AFFIXPOISON_DESC",
+                "Disable <style=cIsHealing>healing</style> on hit for <style=cIsHealing>8</style> seconds.<br>" +
+                "Periodically release <style=cIsDamage>spiky balls</style>, which deal <style=cIsDamage>100%</style> damage and sprout <style=cIsDamage>spike pits</style> which deal <style=cIsDamage>100%</style> contact damage.<br>" +
+                "<color=#FF7F7F>On death</color>, spawn a <style=cIsDamage>Malachite Urchin</style> which shoots at nearby enemies.");
+
+            updateText("EQUIPMENT_AFFIXHAUNTED_DESC",
+                "<style=cIsUtility>100%</style> chance on hit to <style=cIsUtility>greatly slow</style> enemies, reducing their <style=cIsUtility>movement speed</style> by <style=cIsUtility>80%</style>.<br>" +
+                "Gain a <style=cIsUtility>30m</style> aura which <style=cIsUtility>cloaks</style> allies within and makes them <style=cIsUtility>invisible</style>.");
+
+            updateText("EQUIPMENT_AFFIXEARTH_DESC",
+                "<style=cIsHealing>Heal</style> the nearest damaged ally within <style=cIsHealing>30m</style> for <style=cIsHealing>40%</style> base damage <style=cIsHealing>4 times</style> per second.<br>" +
+                "<color=#FF7F7F>On death</color>, spawn a destructible <style=cIsHealing>healing core</style> which explodes after a few seconds, <style=cIsHealing>healing</style> all entities within for <style=cIsHealing>80 hp</style>.");
+
+            updateText("EQUIPMENT_AFFIXLUNAR_DESC",
+                "<style=cIsDamage>100%</style> chance on hit to <style=cIsDamage>cripple</style> enemies, reducing their <style=cIsDamage>armor</style> by <style=cIsDamage>20%</style> and their <style=cIsUtility>movement speed</style> by <style=cIsUtility>50%</style>.<br>" +
+                "Gain <style=cIsHealing>25% maximum health</style>. <style=cIsHealing>Convert</style> all but <style=cIsHealing>1 health</style> into <style=cIsHealing>regenerating shields</style>.<br>" +
+                "Gain <style=cIsUtility>30% movement speed</style>.");
+
+            updateText("EQUIPMENT_AFFIXCOLLECTIVE_DESC",
+                "Gain a <style=cIsUtility>30m</style> dome which <style=cIsUtility>blocks projectiles</style> and <style=cIsUtility>reduces</style> ally and self cooldowns by <style=cIsUtility>20%</style>.<br>" +
+                "<color=#FF7F7F>On death</color>, <style=cIsDamage>explode</style> for <style=cIsDamage>100%</style> damage and <style=cIsUtility>disable</style> items for <style=cIsUtility>2.5</style> seconds.");
         }
 
         private void updateText(string token, string desc) {
