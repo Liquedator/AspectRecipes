@@ -1,14 +1,12 @@
 # AspectRecipes
 
-AspectRecipes adds crafting recipes for elite aspect equipment in Risk of Rain 2.
+AspectRecipes adds crafting recipes for elite aspect equipment in Risk of Rain 2, as well as fleshed out logbook entries.
 
 2 unused aspects in the game code have been given recipes.
 
 The old recipes which were removed in a recent update (His Spiteful Boon, Aurelionite's Blessing, His Reassurance) have been added back, with the same recipes that they had.
 
 Considerations have been made regarding thematic/gameplay cohesion, as well as balancing (more powerful aspects will require more powerful/rare items).
-
-Recipes for unused equipment have also been added.
 
 ---
 
