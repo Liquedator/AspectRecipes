@@ -24,10 +24,10 @@ Recipes for unused equipment have also been added.
 | Wake of Vultures + Irradiant Pearl | Shared Design |
 | Wake of Vultures + Unstable Tesla Coil | Silence Between Two Strikes |
 | Wake of Vultures + Happiest Mask | Spectral Circlet |
+| Wake of Vultures + Pluripotent Larva | From One Thousand Miles Under |
 | Wake of Vultures + Hardlight Afterbuner | Beyond the Limits (currently has no function)|
 
 ---
 
 ### TO DO
-- Add all aspect equipments to the logbook
 - Add functionality for the unused "Beyond the Limits" aspect in the game code
