@@ -8,19 +8,21 @@ using System.Collections;
 using RoR2.ContentManagement;
 using RoR2.ExpansionManagement;
 using System.IO;
+using UnityEngine.AddressableAssets;
+using HG;
 
 
 
 namespace AspectRecipes {
     [BepInDependency(R2API.R2API.PluginGUID)]
-
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
-    
+    [BepInDependency(PrefabAPI.PluginGUID)]
+
     public class AspectRecipes : BaseUnityPlugin {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "liquedator";
         public const string PluginName = "AspectRecipes";
-        public const string PluginVersion = "1.0.5";
+        public const string PluginVersion = "1.0.6";
 
         //number of new entries
         private const int numCraftables = 11;
@@ -196,7 +198,8 @@ namespace AspectRecipes {
 
         private void addLogbookDescriptions() {
             //load void infestor icon
-            string path = System.IO.Path.Combine(Paths.PluginPath, "liquedator-AspectRecipes", "AspectRecipes", "voidelitepickupicon.png");
+            string path = System.IO.Path.Combine(Paths.PluginPath, "Unknown-AspectRecipes.dll", "voidelitepickupicon.png");
+            //string path = System.IO.Path.Combine(Paths.PluginPath, "liquedator-AspectRecipes", "AspectRecipes", "voidelitepickupicon.png");
             Debug.Log("Obtaining sprite file from: " + path);
             byte[] bytes = File.ReadAllBytes(path);
             var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
@@ -204,11 +207,14 @@ namespace AspectRecipes {
             Sprite voidSprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f);
             getEquipDefFromName("EliteVoidEquipment").pickupIconSprite = voidSprite;
 
-            //do the pickup def too
+            //do the pickup def too, for chef crafting menu
             PickupIndex pickupIndex = PickupCatalog.FindPickupIndex(getEquipDefFromName("EliteVoidEquipment").equipmentIndex);
             PickupDef pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
             pickupDef.iconSprite = voidSprite;
             pickupDef.iconTexture = voidSprite.texture;
+
+            //do the 2d prefab
+            setVoidInfestorModel();
 
             updateText("EQUIPMENT_AFFIXVOID_NAME", "From One Thousand Miles Under");
             updateText("EQUIPMENT_AFFIXVOID_PICKUP", "Become an aspect of the Void.");
@@ -286,6 +292,44 @@ namespace AspectRecipes {
             var def = EquipmentCatalog.GetEquipmentDef(idx);
             Debug.Log("Returning " + name + " as an equipmentDef");
             return def;
+        }
+
+        private void setVoidInfestorModel() { //get the prefab from the bodycatalog
+            //declare eqdef and pickupdef
+            var eqDef = getEquipDefFromName("EliteVoidEquipment");
+            PickupIndex pickupIndex = PickupCatalog.FindPickupIndex(eqDef.equipmentIndex);
+            PickupDef pickupDef = PickupCatalog.GetPickupDef(pickupIndex);
+
+            //pull the addressable prefab and clone onto the logbook model
+            GameObject displayPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion();
+            GameObject pickupDisplay = PrefabAPI.InstantiateClone(displayPrefab, "PickupAffixVoid_AspectRecipes", false);
+
+            //scale it so it looks proper in game
+            pickupDisplay.transform.GetChild(0).GetChild(2).SetAsFirstSibling();
+
+            pickupDisplay.transform.GetChild(1).localPosition = new Vector3(0f, 0.7f, 0f);
+
+            pickupDisplay.transform.GetChild(1).GetChild(0).localPosition = new Vector3(0f, -0.5f, -0.6f);
+            pickupDisplay.transform.GetChild(1).GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+            ((Component)pickupDisplay.transform.GetChild(1).GetChild(1)).gameObject.SetActive(false);
+            ((Component)pickupDisplay.transform.GetChild(1).GetChild(3)).gameObject.SetActive(false);
+
+            pickupDisplay.transform.GetChild(0).eulerAngles = new Vector3(310f, 0f, 0f);
+            pickupDisplay.transform.GetChild(0).localScale = new Vector3(0.75f, 0.75f, 0.75f);
+
+            var itemDisplay = pickupDisplay.GetComponent<ItemDisplay>();
+    
+            ItemDisplay component = pickupDisplay.GetComponent<ItemDisplay>();
+            ArrayUtils.ArrayRemoveAtAndResize<CharacterModel.RendererInfo>(ref component.rendererInfos, 4, 1);
+            
+            var mpp = pickupDisplay.AddComponent<ModelPanelParameters>(); //for logbook model
+            mpp.modelRotation = Quaternion.Euler(-20f, -45f, 0f); //rotate it backwards a bit
+
+            eqDef.pickupModelReference = new AssetReferenceT<GameObject>("");
+            eqDef.pickupModelPrefab = pickupDisplay;
+
+            pickupDef.displayPrefab = pickupDisplay;
         }
 
         public class myContentPack : IContentPackProvider {

@@ -16,3 +16,7 @@
 
 - Fixed missing texture for void aspect in the Wandering Chef crafting menu
 - Implemented a missing pickup description for the void aspect
+
+## 1.0.6
+
+- Added logbook and in game model for elite void aspect
