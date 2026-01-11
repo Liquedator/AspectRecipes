@@ -20,3 +20,7 @@
 ## 1.0.6
 
 - Added logbook and in game model for elite void aspect
+
+## 1.0.7
+
+- Fixed small sprite obtain string error

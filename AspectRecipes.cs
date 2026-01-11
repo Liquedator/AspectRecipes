@@ -22,7 +22,7 @@ namespace AspectRecipes {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "liquedator";
         public const string PluginName = "AspectRecipes";
-        public const string PluginVersion = "1.0.6";
+        public const string PluginVersion = "1.0.7";
 
         //number of new entries
         private const int numCraftables = 11;
@@ -198,8 +198,8 @@ namespace AspectRecipes {
 
         private void addLogbookDescriptions() {
             //load void infestor icon
-            string path = System.IO.Path.Combine(Paths.PluginPath, "Unknown-AspectRecipes.dll", "voidelitepickupicon.png");
-            //string path = System.IO.Path.Combine(Paths.PluginPath, "liquedator-AspectRecipes", "AspectRecipes", "voidelitepickupicon.png");
+            //string path = System.IO.Path.Combine(Paths.PluginPath, "Unknown-AspectRecipes.dll", "voidelitepickupicon.png");
+            string path = System.IO.Path.Combine(Paths.PluginPath, "liquedator-AspectRecipes", "AspectRecipes", "voidelitepickupicon.png");
             Debug.Log("Obtaining sprite file from: " + path);
             byte[] bytes = File.ReadAllBytes(path);
             var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
