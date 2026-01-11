@@ -1,6 +1,6 @@
 # AspectRecipes
 
-AspectRecipes adds crafting recipes for elite aspect equipment in Risk of Rain 2, as well as fleshed out logbook entries.
+AspectRecipes adds crafting recipes for elite aspect equipment in Risk of Rain 2, as well as fleshed out logbook entries for all the aspects..
 
 2 unused aspects in the game code have been given recipes.
 
